@@ -1,3 +1,77 @@
+/* Mobile Menu Button */
+.mobile-menu-btn {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    color: var(--color-white);
+    line-height: 0;
+}
+
+.header.scrolled .mobile-menu-btn {
+    color: var(--color-primary);
+}
+
+.mobile-menu-btn .icon-close { display: none; }
+.mobile-menu-btn.open .icon-menu { display: none; }
+.mobile-menu-btn.open .icon-close { display: block; }
+
+/* Mobile Nav Dropdown */
+.mobile-nav {
+    display: none;
+    flex-direction: column;
+    background: var(--color-white);
+    padding: 16px 24px 24px;
+    border-top: 1px solid var(--color-border);
+    gap: 0;
+    box-shadow: var(--shadow-md);
+}
+
+.mobile-nav.open {
+    display: flex;
+}
+
+.mobile-nav-link {
+    padding: 14px 0;
+    font-weight: 500;
+    font-size: 1rem;
+    color: var(--color-primary);
+    border-bottom: 1px solid var(--color-border);
+    display: block;
+}
+
+.mobile-nav-link:last-of-type {
+    border-bottom: none;
+}
+
+.mobile-nav-cta {
+    margin-top: 20px;
+    width: 100%;
+    justify-content: center;
+}
+
+/* Featured Property Card */
+.property-card-featured {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+}
+
+.property-card-featured .property-img {
+    height: 100%;
+}
+
+.property-card-featured .property-content {
+    padding: 40px;
+}
+
+.property-card-featured .property-title {
+    font-size: 2rem;
+    margin-bottom: 12px;
+}
+
 /* Header */
 .header {
     position: fixed;

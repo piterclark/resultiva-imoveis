@@ -13,7 +13,22 @@
     .container { max-width: 720px; }
     .about-grid { grid-template-columns: 1fr; gap: var(--spacing-lg); }
     .hero h1 { font-size: 3rem; }
-    .nav-links { display: none; } /* Hamburger menu needed */
+    .nav-links { display: none; }
+    .mobile-menu-btn { display: flex; }
+    .logo img { height: 45px; }
+
+    /* Featured card stacks on tablet too */
+    .property-card-featured {
+        grid-template-columns: 1fr !important;
+    }
+    .property-card-featured .property-img {
+        height: 320px !important;
+    }
+
+    /* imoveis.html filter bar */
+    .filter-bar {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 /* Mobile Devices */
@@ -27,6 +42,26 @@
     .grid-2, .grid-3 { grid-template-columns: 1fr; }
     .footer-top { grid-template-columns: 1fr; }
     .stat-item h4 { font-size: 1.5rem; }
+    .logo img { height: 40px; }
+
+    /* Featured card */
+    .property-card-featured .property-img {
+        height: 260px !important;
+    }
+    .property-card-featured .property-content {
+        padding: 24px !important;
+    }
+    .property-card-featured .property-title {
+        font-size: 1.5rem !important;
+    }
+
+    /* Contact section grid stacks */
+    .grid-2 { gap: var(--spacing-md); }
+
+    /* imoveis.html filter bar */
+    .filter-bar {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* Mobile Small */
