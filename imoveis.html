@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imóveis — MIB | Explore as Melhores Oportunidades em Belém</title>
+    
+    <!-- CSS Links -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        .page-header {
+            padding: 120px 0 60px;
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            text-align: center;
+        }
+        
+        .filter-bar {
+            background: var(--color-white);
+            padding: 30px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            margin-top: -50px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr) auto;
+            gap: 15px;
+            align-items: end;
+        }
+        
+        .filter-btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 40px;
+        }
+        
+        .filter-btn {
+            padding: 8px 20px;
+            border-radius: 30px;
+            border: 1px solid var(--color-border);
+            background: var(--color-white);
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+        
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--color-primary);
+            color: var(--color-white);
+            border-color: var(--color-primary);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header (Same as index) -->
+    <header class="header scrolled"> <!-- Forced scrolled for visibility on light page -->
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="img/logo.png" alt="MIB Logo">
+            </a>
+            
+            <nav class="nav-links">
+                <a href="index.html" class="nav-link" style="color: var(--color-primary)">Início</a>
+                <a href="imoveis.html" class="nav-link" style="color: var(--color-accent)">Imóveis</a>
+                <a href="index.html#sobre" class="nav-link" style="color: var(--color-primary)">Sobre</a>
+                <a href="index.html#contato" class="nav-link" style="color: var(--color-primary)">Contato</a>
+                <a href="https://wa.me/559187041837" target="_blank" class="btn btn-primary">
+                    <i data-lucide="phone"></i> Agendar Atendimento
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <span class="section-subtitle" style="color: var(--color-accent)">Galeria de Imóveis</span>
+            <h1 style="color: var(--color-white)">Explore os imóveis ativos da MIB com mais clareza.</h1>
+        </div>
+    </section>
+
+    <!-- Content -->
+    <section class="section">
+        <div class="container">
+            
+            <!-- Filter Bar -->
+            <div class="filter-bar mb-4">
+                <div class="form-group mb-0">
+                    <label>Finalidade</label>
+                    <select class="form-control">
+                        <option>Comprar</option>
+                        <option>Alugar</option>
+                    </select>
+                </div>
+                <div class="form-group mb-0">
+                    <label>Tipo de Imóvel</label>
+                    <select class="form-control">
+                        <option>Todos os tipos</option>
+                        <option>Apartamento</option>
+                        <option>Casa</option>
+                        <option>Studio</option>
+                        <option>Cobertura</option>
+                    </select>
+                </div>
+                <div class="form-group mb-0">
+                    <label>Bairro</label>
+                    <select class="form-control">
+                        <option>Todos os bairros</option>
+                        <option>Umarizal</option>
+                        <option>Nazaré</option>
+                        <option>Batista Campos</option>
+                        <option>Marco</option>
+                    </select>
+                </div>
+                <div class="form-group mb-0">
+                    <label>Preço Máximo</label>
+                    <select class="form-control">
+                        <option>Até R$ 500k</option>
+                        <option>Até R$ 1kk</option>
+                        <option>Até R$ 2kk</option>
+                        <option>Qualquer valor</option>
+                    </select>
+                </div>
+                <button class="btn btn-dark" style="height: 45px;">Filtrar</button>
+            </div>
+
+            <!-- Quick Filter Tabs -->
+            <div class="filter-btn-group">
+                <button class="filter-btn active" data-filter="all">Tudo</button>
+                <button class="filter-btn" data-filter="apartamento">Apartamentos</button>
+                <button class="filter-btn" data-filter="studio">Studios</button>
+                <button class="filter-btn" data-filter="cobertura">Coberturas</button>
+            </div>
+
+            <!-- Property Grid -->
+            <div class="grid grid-3">
+                <!-- Card 1 -->
+                <article class="property-card" data-type="apartamento" onclick="window.location.href='detalhe.html'" style="cursor: pointer;">
+                    <div class="property-img">
+                        <img src="img/apartment_1.png" alt="Torres Cenário">
+                        <div class="badge" style="position: absolute; top: 15px; left: 15px;">Destaque</div>
+                    </div>
+                    <div class="property-content">
+                        <span class="property-type">Apartamento</span>
+                        <h3 class="property-title">Torres Cenário — 3 Suítes</h3>
+                        <p class="property-location"><i data-lucide="map-pin"></i> Telégrafo, Belém</p>
+                        <div class="property-features">
+                            <div class="feature-item"><i data-lucide="bed"></i> 3 Suítes</div>
+                            <div class="feature-item"><i data-lucide="square"></i> 150m²</div>
+                        </div>
+                        <div class="property-price">R$ 1.200.000</div>
+                    </div>
+                </article>
+
+                <!-- Card 2 -->
+                <article class="property-card" data-type="apartamento">
+                    <div class="property-img">
+                        <img src="img/apartment_2.png" alt="Ed. Montfort">
+                    </div>
+                    <div class="property-content">
+                        <span class="property-type">Apartamento</span>
+                        <h3 class="property-title">Ed. Montfort — 2/4 Suíte</h3>
+                        <p class="property-location"><i data-lucide="map-pin"></i> Marco, Belém</p>
+                        <div class="property-features">
+                            <div class="feature-item"><i data-lucide="bed"></i> 2 Quartos</div>
+                            <div class="feature-item"><i data-lucide="square"></i> 78m²</div>
+                        </div>
+                        <div class="property-price">R$ 620.000</div>
+                    </div>
+                </article>
+
+                <!-- Card 3 -->
+                <article class="property-card" data-type="studio" onclick="window.location.href='detalhe.html'" style="cursor: pointer;">
+                    <div class="property-img">
+                        <img src="img/studio_1.png" alt="Studio Airbnb">
+                    </div>
+                    <div class="property-content">
+                        <span class="property-type">Studio</span>
+                        <h3 class="property-title">Studio Batista Campos</h3>
+                        <p class="property-location"><i data-lucide="map-pin"></i> Batista Campos, Belém</p>
+                        <div class="property-features">
+                            <div class="feature-item"><i data-lucide="bed"></i> 1 Quarto</div>
+                            <div class="feature-item"><i data-lucide="square"></i> 35m²</div>
+                        </div>
+                        <div class="property-price">R$ 360.000</div>
+                    </div>
+                </article>
+
+                <!-- Card 4 -->
+                <article class="property-card" data-type="apartamento">
+                    <div class="property-img">
+                        <img src="img/apartment_3.png" alt="Res. Premium Park">
+                    </div>
+                    <div class="property-content">
+                        <span class="property-type">Apartamento</span>
+                        <h3 class="property-title">Res. Premium Park</h3>
+                        <p class="property-location"><i data-lucide="map-pin"></i> Nazaré, Belém</p>
+                        <div class="property-features">
+                            <div class="feature-item"><i data-lucide="bed"></i> 4 Suítes</div>
+                            <div class="feature-item"><i data-lucide="square"></i> 180m²</div>
+                        </div>
+                        <div class="property-price">R$ 2.100.000</div>
+                    </div>
+                </article>
+
+                <!-- Card 5 -->
+                <article class="property-card" data-type="cobertura" onclick="window.location.href='detalhe.html'" style="cursor: pointer;">
+                    <div class="property-img">
+                        <img src="img/penthouse_1.png" alt="Cobertura Duplex">
+                    </div>
+                    <div class="property-content">
+                        <span class="property-type">Cobertura</span>
+                        <h3 class="property-title">Cobertura Duplex Reduto</h3>
+                        <p class="property-location"><i data-lucide="map-pin"></i> Reduto, Belém</p>
+                        <div class="property-features">
+                            <div class="feature-item"><i data-lucide="bed"></i> 5 Suítes</div>
+                            <div class="feature-item"><i data-lucide="square"></i> 420m²</div>
+                        </div>
+                        <div class="property-price">R$ 3.500.000</div>
+                    </div>
+                </article>
+
+                <!-- Card 6 -->
+                <article class="property-card" data-type="apartamento">
+                    <div class="property-img">
+                        <img src="img/hero_bg.png" alt="Residencial Miramar">
+                    </div>
+                    <div class="property-content">
+                        <span class="property-type">Apartamento</span>
+                        <h3 class="property-title">Residencial Miramar</h3>
+                        <p class="property-location"><i data-lucide="map-pin"></i> Umarizal, Belém</p>
+                        <div class="property-features">
+                            <div class="feature-item"><i data-lucide="bed"></i> 3 Quartos</div>
+                            <div class="feature-item"><i data-lucide="square"></i> 110m²</div>
+                        </div>
+                        <div class="property-price">R$ 890.000</div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Same as index) -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-info">
+                    <a href="index.html" class="footer-logo">
+                        <img src="img/logo.png" alt="MIB Logo">
+                    </a>
+                    <p class="footer-desc">Referência em imóveis de alto padrão em Belém. Especialistas em encontrar a oportunidade perfeita para morar ou investir.</p>
+                </div>
+                <div>
+                    <h4 class="footer-title">Links Rápidos</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="imoveis.html">Imóveis</a></li>
+                        <li><a href="index.html#sobre">Sobre Nós</a></li>
+                        <li><a href="index.html#contato">Contato</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Serviços</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Venda</a></li>
+                        <li><a href="#">Avaliação</a></li>
+                        <li><a href="#">Investimento</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Belém / PA</h4>
+                    <p class="footer-desc">Umarizal, Nazaré, Batista Campos, Marco e muito mais.</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Melhores Imóveis Belém - Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/filters.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Imóvel — MIB | Melhores Imóveis Belém</title>
+    
+    <!-- CSS Links -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        .property-detail-header {
+            padding: 140px 0 40px;
+            background: var(--color-white);
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            grid-template-rows: repeat(2, 250px);
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .gallery-item {
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .gallery-item:first-child {
+            grid-row: span 2;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.03);
+        }
+        
+        .detail-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+        
+        .property-info-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 25px;
+            border-bottom: 1px solid var(--color-border);
+            padding-bottom: 25px;
+        }
+        
+        .property-price-tag {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+        
+        .feature-grid-detail {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 40px;
+            background: var(--color-light);
+            padding: 25px;
+            border-radius: var(--radius-md);
+        }
+        
+        .feature-detail-item {
+            text-align: center;
+        }
+        
+        .feature-detail-item i {
+            color: var(--color-accent);
+            margin-bottom: 8px;
+            width: 24px;
+            height: 24px;
+        }
+        
+        .feature-detail-item span {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+            font-weight: 600;
+        }
+        
+        .feature-detail-item strong {
+            display: block;
+            font-size: 1.1rem;
+            color: var(--color-primary);
+        }
+        
+        .property-description h3 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .property-description p {
+            margin-bottom: 20px;
+            color: var(--color-text-muted);
+            line-height: 1.8;
+        }
+        
+        .amenities-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .amenity-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: var(--color-text);
+        }
+        
+        .amenity-item i {
+            color: var(--color-accent);
+            width: 18px;
+            height: 18px;
+        }
+        
+        .contact-card {
+            background: var(--color-white);
+            padding: 30px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            position: sticky;
+            top: 100px;
+            border: 1px solid var(--color-border);
+        }
+        
+        @media (max-width: 991px) {
+            .gallery-grid, .detail-layout {
+                grid-template-columns: 1fr;
+            }
+            .gallery-grid {
+                grid-template-rows: 400px repeat(2, 200px);
+            }
+            .feature-grid-detail {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .amenities-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header scrolled">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="img/logo.png" alt="MIB Logo">
+            </a>
+            
+            <nav class="nav-links">
+                <a href="index.html" class="nav-link" style="color: var(--color-primary)">Início</a>
+                <a href="imoveis.html" class="nav-link" style="color: var(--color-primary)">Imóveis</a>
+                <a href="index.html#sobre" class="nav-link" style="color: var(--color-primary)">Sobre</a>
+                <a href="index.html#contato" class="nav-link" style="color: var(--color-primary)">Contato</a>
+                <a href="https://wa.me/559187041837" target="_blank" class="btn btn-primary">
+                    <i data-lucide="phone"></i> Agendar Atendimento
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Property Header & Gallery -->
+    <section class="property-detail-header">
+        <div class="container">
+            <div class="mb-3">
+                <a href="imoveis.html" style="color: var(--color-accent); font-weight: 500; display: flex; align-items: center; gap: 5px;">
+                    <i data-lucide="chevron-left" style="width: 18px;"></i> Voltar para listagem
+                </a>
+            </div>
+            
+            <div class="property-info-header">
+                <div>
+                    <span class="badge mb-1">Destaque</span>
+                    <h1 style="font-size: 2.5rem; margin-bottom: 5px;">Torres Cenário — Apartamento de Alto Luxo</h1>
+                    <p style="color: var(--color-text-muted); display: flex; align-items: center; gap: 5px;">
+                        <i data-lucide="map-pin" style="width: 18px;"></i> Bairro Telégrafo, Belém - PA
+                    </p>
+                </div>
+                <div class="text-right">
+                    <p style="font-size: 0.9rem; color: var(--color-text-muted); font-weight: 600; text-transform: uppercase;">Valor sugerido</p>
+                    <div class="property-price-tag">R$ 1.200.000</div>
+                </div>
+            </div>
+
+            <!-- Gallery -->
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="img/apartment_1.png" alt="Main View">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/apartment_2.png" alt="Interior 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/apartment_3.png" alt="Interior 2">
+                </div>
+            </div>
+
+            <!-- Main Layout -->
+            <div class="detail-layout">
+                <div class="detail-content">
+                    
+                    <!-- Quick Specs -->
+                    <div class="feature-grid-detail">
+                        <div class="feature-detail-item">
+                            <i data-lucide="square"></i>
+                            <span>Área Útil</span>
+                            <strong>150 m²</strong>
+                        </div>
+                        <div class="feature-detail-item">
+                            <i data-lucide="bed"></i>
+                            <span>Suítes</span>
+                            <strong>03</strong>
+                        </div>
+                        <div class="feature-detail-item">
+                            <i data-lucide="droplet"></i>
+                            <span>Banheiros</span>
+                            <strong>04</strong>
+                        </div>
+                        <div class="feature-detail-item">
+                            <i data-lucide="car"></i>
+                            <span>Vagas</span>
+                            <strong>02</strong>
+                        </div>
+                    </div>
+
+                    <!-- Description -->
+                    <div class="property-description">
+                        <h3>Sobre este imóvel</h3>
+                        <p>Descubra o auge da sofisticação nas Torres Cenário. Este apartamento foi meticulosamente projetado para oferecer o máximo em conforto e exclusividade no coração de Belém.</p>
+                        <p>Com uma planta inteligente que prioriza a iluminação natural e a ventilação cruzada, o imóvel conta com 3 amplas suítes, acabamento em porcelanato de primeira linha e uma varanda gourmet com vista panorâmica definitiva.</p>
+                        
+                        <h3 style="margin-top: 30px;">Infraestrutura e Lazer</h3>
+                        <div class="amenities-list">
+                            <div class="amenity-item"><i data-lucide="check-circle"></i> Piscina com Raia</div>
+                            <div class="amenity-item"><i data-lucide="check-circle"></i> Academia Equipada</div>
+                            <div class="amenity-item"><i data-lucide="check-circle"></i> Salão de Festas</div>
+                            <div class="amenity-item"><i data-lucide="check-circle"></i> Espaço Gourmet</div>
+                            <div class="amenity-item"><i data-lucide="check-circle"></i> Playground</div>
+                            <div class="amenity-item"><i data-lucide="check-circle"></i> Portaria 24h</div>
+                            <div class="amenity-item"><i data-lucide="check-circle"></i> Gerador Integral</div>
+                            <div class="amenity-item"><i data-lucide="check-circle"></i> Spa & Sauna</div>
+                            <div class="amenity-item"><i data-lucide="check-circle"></i> Quadra Poliesportiva</div>
+                        </div>
+                    </div>
+
+                    <!-- Location Mockup -->
+                    <div style="margin-top: 50px;">
+                        <h3>Localização</h3>
+                        <p class="mb-2">Edifício Mirai Offices - R. Municipalidade, nº 985 - Umarizal</p>
+                        <div style="width: 100%; height: 300px; background: #eee; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; color: #999;">
+                            <i data-lucide="map" style="width: 48px; height: 48px; margin-bottom: 10px;"></i>
+                            <span>Mapa interativo (Placeholder)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar Contact -->
+                <aside class="sidebar">
+                    <div class="contact-card">
+                        <h3 style="margin-bottom: 20px;">Tenho Interesse</h3>
+                        <p style="font-size: 0.9rem; color: var(--color-text-muted); margin-bottom: 25px;">Preencha o formulário abaixo e um de nossos especialistas entrará em contato em breve.</p>
+                        
+                        <form>
+                            <div class="form-group">
+                                <label>Nome</label>
+                                <input type="text" class="form-control" placeholder="Seu nome">
+                            </div>
+                            <div class="form-group">
+                                <label>WhatsApp</label>
+                                <input type="tel" class="form-control" placeholder="(91) 90000-0000">
+                            </div>
+                            <div class="form-group">
+                                <label>E-mail</label>
+                                <input type="email" class="form-control" placeholder="seu@email.com">
+                            </div>
+                            <button type="submit" class="btn btn-dark" style="width: 100%; margin-bottom: 15px;">Enviar Mensagem</button>
+                        </form>
+                        
+                        <div style="text-align: center; margin: 20px 0;">
+                            <span style="font-size: 0.8rem; color: #ccc; text-transform: uppercase; letter-spacing: 1px;">ou</span>
+                        </div>
+                        
+                        <a href="https://wa.me/559187041837" target="_blank" class="btn btn-primary" style="width: 100%; background-color: #25D366; border: none;">
+                            <i data-lucide="message-circle"></i> Falar via WhatsApp
+                        </a>
+                        
+                        <div style="margin-top: 30px; display: flex; align-items: center; gap: 15px; padding-top: 25px; border-top: 1px solid var(--color-border);">
+                            <img src="img/about_image.png" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;">
+                            <div>
+                                <strong style="display: block; font-size: 0.9rem;">Consultor MIB</strong>
+                                <span style="font-size: 0.8rem; color: var(--color-text-muted);">Especialista em Alto Padrão</span>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Properties -->
+    <section class="section" style="background-color: var(--color-light);">
+        <div class="container">
+            <h2 class="section-title">Imóveis Semelhantes</h2>
+            <div class="grid grid-3">
+                <article class="property-card">
+                    <div class="property-img">
+                        <img src="img/apartment_2.png" alt="Ed. Montfort">
+                    </div>
+                    <div class="property-content">
+                        <span class="property-type">Apartamento</span>
+                        <h3 class="property-title">Ed. Montfort — 2/4 Suíte</h3>
+                        <div class="property-price">R$ 620.000</div>
+                    </div>
+                </article>
+                <article class="property-card">
+                    <div class="property-img">
+                        <img src="img/penthouse_1.png" alt="Cobertura">
+                    </div>
+                    <div class="property-content">
+                        <span class="property-type">Cobertura</span>
+                        <h3 class="property-title">Cobertura Duplex Reduto</h3>
+                        <div class="property-price">R$ 3.500.000</div>
+                    </div>
+                </article>
+                <article class="property-card">
+                    <div class="property-img">
+                        <img src="img/apartment_3.png" alt="Premium Park">
+                    </div>
+                    <div class="property-content">
+                        <span class="property-type">Apartamento</span>
+                        <h3 class="property-title">Res. Premium Park</h3>
+                        <div class="property-price">R$ 2.100.000</div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 Melhores Imóveis Belém - Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS Scripts -->
+    <script src="js/main.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

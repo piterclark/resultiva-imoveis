@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIB — Melhores Imóveis Belém | Imobiliária de Alto Padrão</title>
+    <meta name="description" content="Encontre imóveis de alto padrão em Belém com a MIB. Atendimento próximo e oportunidades selecionadas para comprar ou investir.">
+    
+    <!-- CSS Links -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="img/logo.png" alt="MIB Logo">
+            </a>
+            
+            <nav class="nav-links">
+                <a href="index.html" class="nav-link">Início</a>
+                <a href="imoveis.html" class="nav-link">Imóveis</a>
+                <a href="#sobre" class="nav-link">Sobre</a>
+                <a href="#contato" class="nav-link">Contato</a>
+                <a href="https://wa.me/559187041837" target="_blank" class="btn btn-primary" id="header-cta">
+                    <i data-lucide="phone"></i> Agendar Atendimento
+                </a>
+            </nav>
+            
+            <!-- Mobile Toggle Placeholder -->
+            <div class="mobile-menu-btn" style="display: none;">
+                <i data-lucide="menu"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" style="background-image: url('img/hero_bg.png');">
+        <div class="container">
+            <div class="hero-content">
+                <span class="section-subtitle" style="color: var(--color-white)">Imobiliária em Belém</span>
+                <h1>Encontre imóveis com confiança e atendimento próximo.</h1>
+                <p class="hero-sub">A MIB apresenta oportunidades selecionadas para quem busca comprar ou investir com mais segurança, clareza e agilidade em Belém.</p>
+                <div class="hero-btns">
+                    <a href="imoveis.html" class="btn btn-primary">
+                        <i data-lucide="search"></i> Ver Imóveis
+                    </a>
+                    <a href="https://wa.me/559187041837" class="btn btn-outline" target="_blank">
+                        <i data-lucide="calendar"></i> Agendar Visita
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Property -->
+    <section class="section section-featured" id="destaque">
+        <div class="container">
+            <div class="text-center mb-4">
+                <span class="section-subtitle">Destaque da Vitrine</span>
+                <h2 class="section-title">Selecionando o principal destaque.</h2>
+            </div>
+            
+            <div class="property-card" style="display: grid; grid-template-columns: 1.2fr 1fr;">
+                <div class="property-img" style="height: 100%;">
+                    <img src="img/apartment_1.png" alt="Torres Cenário">
+                    <div class="badge" style="position: absolute; top: 20px; left: 20px; background: var(--color-primary);">Destaque do Mês</div>
+                </div>
+                <div class="property-content" style="padding: 40px;">
+                    <span class="property-type">Apartamento</span>
+                    <h3 class="property-title" style="font-size: 2rem; margin-bottom: 12px;">Torres Cenário — Alto Luxo</h3>
+                    <p class="property-location"><i data-lucide="map-pin"></i> Bairro Telégrafo, Belém - PA</p>
+                    <p class="mb-3" style="color: var(--color-text-muted);">Um empreendimento exclusivo com 3 suítes, acabamento de altíssimo nível e uma vista deslumbrante da cidade. Perfeito para quem busca conforto e sofisticação.</p>
+                    <div class="property-features">
+                        <div class="feature-item"><i data-lucide="bed"></i> 3 Suítes</div>
+                        <div class="feature-item"><i data-lucide="square"></i> 150m²</div>
+                        <div class="feature-item"><i data-lucide="car"></i> 2 Vagas</div>
+                    </div>
+                    <div class="property-price mb-4">R$ 1.200.000</div>
+                    <a href="detalhe.html" class="btn btn-dark">Ver Detalhes do Imóvel</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recent Properties -->
+    <section class="section" id="recentes" style="background-color: var(--color-white);">
+        <div class="container">
+            <div class="text-center mb-4">
+                <span class="section-subtitle">Oportunidades</span>
+                <h2 class="section-title">Imóveis Recentes</h2>
+            </div>
+            
+            <div class="grid grid-3">
+                <!-- Card 1 -->
+                <article class="property-card">
+                    <div class="property-img">
+                        <img src="img/apartment_2.png" alt="Ed. Montfort">
+                        <div class="badge" style="position: absolute; top: 15px; right: 15px;">Novo</div>
+                    </div>
+                    <div class="property-content">
+                        <span class="property-type">Apartamento</span>
+                        <h3 class="property-title">Ed. Montfort — 2/4 Suíte</h3>
+                        <p class="property-location"><i data-lucide="map-pin"></i> Bairro Marco, Belém</p>
+                        <div class="property-features">
+                            <div class="feature-item"><i data-lucide="bed"></i> 2 Quartos</div>
+                            <div class="feature-item"><i data-lucide="square"></i> 78m²</div>
+                        </div>
+                        <div class="property-price">R$ 620.000</div>
+                    </div>
+                </article>
+
+                <!-- Card 2 -->
+                <article class="property-card" onclick="window.location.href='detalhe.html'" style="cursor: pointer;">
+                    <div class="property-img">
+                        <img src="img/studio_1.png" alt="Studio Airbnb">
+                    </div>
+                    <div class="property-content">
+                        <span class="property-type">Studio</span>
+                        <h3 class="property-title">Studio para Airbnb</h3>
+                        <p class="property-location"><i data-lucide="map-pin"></i> Batista Campos, Belém</p>
+                        <div class="property-features">
+                            <div class="feature-item"><i data-lucide="bed"></i> 1 Quarto</div>
+                            <div class="feature-item"><i data-lucide="square"></i> 35m²</div>
+                        </div>
+                        <div class="property-price">R$ 360.000</div>
+                    </div>
+                </article>
+
+                <!-- Card 3 -->
+                <article class="property-card" onclick="window.location.href='detalhe.html'" style="cursor: pointer;">
+                    <div class="property-img">
+                        <img src="img/penthouse_1.png" alt="Cobertura Duplex">
+                    </div>
+                    <div class="property-content">
+                        <span class="property-type">Cobertura</span>
+                        <h3 class="property-title">Cobertura Duplex Reduto</h3>
+                        <p class="property-location"><i data-lucide="map-pin"></i> Bairro Reduto, Belém</p>
+                        <div class="property-features">
+                            <div class="feature-item"><i data-lucide="bed"></i> 5 Suítes</div>
+                            <div class="feature-item"><i data-lucide="square"></i> 420m²</div>
+                        </div>
+                        <div class="property-price">R$ 3.500.000</div>
+                    </div>
+                </article>
+            </div>
+            
+            <div class="text-center mt-4" style="margin-top: 50px;">
+                <a href="imoveis.html" class="btn btn-outline" style="border-color: var(--color-primary); color: var(--color-primary);">Ver todos os imóveis</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="sobre">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-img">
+                    <img src="img/about_image.png" alt="Sobre a MIB">
+                </div>
+                <div class="about-content">
+                    <span class="section-subtitle">Sobre a MIB</span>
+                    <h2 class="section-title">Autoridade e atendimento próximo para encontrar o imóvel certo.</h2>
+                    <p class="mb-3">A Melhores Imóveis Belém atua com olhar estratégico, apresentação cuidadosa e atendimento humano para transformar a busca por um imóvel em uma experiência mais segura, clara e eficiente.</p>
+                    <p>Nossa missão é entender o seu momento, filtrar as melhores oportunidades e ajudar você a encontrar o imóvel dos sonhos com confiança do primeiro contato até a decisão final.</p>
+                    
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <h4>150+</h4>
+                            <p>Imóveis<br>Vendidos</p>
+                        </div>
+                        <div class="stat-item">
+                            <h4>10+</h4>
+                            <p>Anos de<br>Experiência</p>
+                        </div>
+                        <div class="stat-item">
+                            <h4>98%</h4>
+                            <p>Clientes<br>Satisfeitos</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contato" style="background-color: var(--color-primary); color: var(--color-white);">
+        <div class="container">
+            <div class="grid grid-2" style="align-items: center;">
+                <div>
+                    <span class="section-subtitle" style="color: var(--color-accent)">Fale Conosco</span>
+                    <h2 class="section-title" style="color: var(--color-white)">Pronto para encontrar seu novo lar?</h2>
+                    <p class="mb-4" style="color: rgba(255, 255, 255, 0.7)">Nossa equipe está disponível para tirar todas as suas dúvidas e agendar visitas exclusivas aos melhores imóveis de Belém.</p>
+                    
+                    <ul class="contact-info">
+                        <li><i data-lucide="phone"></i> (91) 98704-1837</li>
+                        <li><i data-lucide="map-pin"></i> Edifício Mirai Offices - R. Municipalidade, nº 985 - Umarizal, Belém - PA</li>
+                        <li><i data-lucide="instagram"></i> @melhores_imoveis_belem</li>
+                    </ul>
+                    
+                    <a href="https://wa.me/559187041837" target="_blank" class="btn btn-primary" style="margin-top: 30px; padding: 16px 40px; font-size: 1.1rem;">
+                        <i data-lucide="message-circle"></i> Chamar no WhatsApp
+                    </a>
+                </div>
+                
+                <div style="background: var(--color-white); padding: 40px; border-radius: var(--radius-lg); color: var(--color-text);">
+                    <form>
+                        <div class="form-group">
+                            <label>Nome Completo</label>
+                            <input type="text" class="form-control" placeholder="Seu nome">
+                        </div>
+                        <div class="form-group">
+                            <label>Seu E-mail</label>
+                            <input type="email" class="form-control" placeholder="email@exemplo.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Telefone</label>
+                            <input type="tel" class="form-control" placeholder="(91) 90000-0000">
+                        </div>
+                        <div class="form-group">
+                            <label>Mensagem</label>
+                            <textarea class="form-control" rows="4" placeholder="Como podemos ajudar?"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-dark" style="width: 100%;">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-info">
+                    <a href="index.html" class="footer-logo">
+                        <img src="img/logo.png" alt="MIB Logo">
+                    </a>
+                    <p class="footer-desc">Referência em imóveis de alto padrão em Belém. Especialistas em encontrar a oportunidade perfeita para morar ou investir.</p>
+                </div>
+                <div>
+                    <h4 class="footer-title">Links Rápidos</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="imoveis.html">Imóveis</a></li>
+                        <li><a href="#sobre">Sobre Nós</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Serviços</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Venda</a></li>
+                        <li><a href="#">Avaliação</a></li>
+                        <li><a href="#">Investimento</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Belém / PA</h4>
+                    <p class="footer-desc">Umarizal, Nazaré, Batista Campos, Marco e muito mais.</p>
+                    <div style="margin-top: 20px;">
+                        <img src="img/skyline_belem.png" alt="Belem Skyline" style="border-radius: var(--radius-md); filter: brightness(0.7);">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Melhores Imóveis Belém - Todos os direitos reservados. CNPJ: 00.000.000/0001-00</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS Scripts -->
+    <script src="js/main.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
