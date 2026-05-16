@@ -162,6 +162,28 @@
                 grid-template-columns: repeat(2, 1fr);
             }
         }
+
+        @media (max-width: 767px) {
+            .property-info-header {
+                flex-direction: column;
+                gap: 16px;
+            }
+            .property-info-header h1 {
+                font-size: 1.75rem !important;
+            }
+            .property-price-tag {
+                font-size: 1.5rem;
+            }
+            .feature-grid-detail {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .amenities-list {
+                grid-template-columns: 1fr 1fr;
+            }
+            .gallery-grid {
+                grid-template-rows: 280px 180px 180px;
+            }
+        }
     </style>
 </head>
 <body>
