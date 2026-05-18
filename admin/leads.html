@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leads — MIB Admin</title>
+    <link rel="stylesheet" href="css/admin.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<div class="admin-layout">
+    <aside class="sidebar">
+        <div class="sidebar-logo">
+            <img src="../img/logo.png" alt="MIB">
+            <div><div class="sidebar-logo-text">MIB Imóveis</div><div class="sidebar-logo-sub">Painel Admin</div></div>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-link"><i data-lucide="layout-dashboard"></i> Dashboard</a>
+            <a href="imoveis.html"   class="nav-link"><i data-lucide="building-2"></i> Imóveis</a>
+            <a href="leads.html"     class="nav-link active"><i data-lucide="users"></i> Leads</a>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <div class="user-email">Conectado como</div>
+                <div class="user-name" id="user-email-display">...</div>
+            </div>
+            <button class="btn-logout" onclick="logout()"><i data-lucide="log-out"></i> Sair</button>
+        </div>
+    </aside>
+
+    <div class="main-content">
+        <div class="topbar">
+            <div class="page-title">
+                <h1>Leads</h1>
+                <p>Contatos recebidos pelo site</p>
+            </div>
+            <div class="topbar-actions">
+                <select id="filter-status" class="form-control-admin" style="width:180px">
+                    <option value="">Todos os status</option>
+                    <option value="novo">Novos</option>
+                    <option value="em_contato">Em contato</option>
+                    <option value="visita_marcada">Visita marcada</option>
+                    <option value="proposta">Proposta</option>
+                    <option value="fechado">Fechados</option>
+                    <option value="perdido">Perdidos</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="content-area">
+            <div class="card">
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nome</th><th>Telefone</th><th>E-mail</th>
+                                <th>Mensagem</th><th>Status</th><th>Data</th><th>Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody id="leads-tbody">
+                            <tr><td colspan="7" class="loading">Carregando...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/config.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/dashboard.js"></script>
+<script src="js/leads.js"></script>
+<script>
+    lucide.createIcons();
+    checkAuth().then(session => {
+        if (!session) return;
+        document.getElementById('user-email-display').textContent = session.user.email;
+        loadLeads();
+    });
+    document.getElementById('filter-status').addEventListener('change', loadLeads);
+</script>
+</body>
+</html>

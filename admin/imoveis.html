@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imóveis — MIB Admin</title>
+    <link rel="stylesheet" href="css/admin.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<div class="admin-layout">
+    <aside class="sidebar">
+        <div class="sidebar-logo">
+            <img src="../img/logo.png" alt="MIB">
+            <div><div class="sidebar-logo-text">MIB Imóveis</div><div class="sidebar-logo-sub">Painel Admin</div></div>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-link"><i data-lucide="layout-dashboard"></i> Dashboard</a>
+            <a href="imoveis.html"   class="nav-link active"><i data-lucide="building-2"></i> Imóveis</a>
+            <a href="leads.html"     class="nav-link"><i data-lucide="users"></i> Leads</a>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <div class="user-email">Conectado como</div>
+                <div class="user-name" id="user-email-display">...</div>
+            </div>
+            <button class="btn-logout" onclick="logout()"><i data-lucide="log-out"></i> Sair</button>
+        </div>
+    </aside>
+
+    <div class="main-content">
+        <div class="topbar">
+            <div class="page-title">
+                <h1>Imóveis</h1>
+                <p>Gerencie o portfólio da MIB</p>
+            </div>
+            <div class="topbar-actions">
+                <select id="filter-status" class="form-control-admin" style="width:160px">
+                    <option value="">Todos os status</option>
+                    <option value="disponivel">Disponível</option>
+                    <option value="em_negociacao">Em negociação</option>
+                    <option value="reservado">Reservado</option>
+                    <option value="vendido">Vendido</option>
+                </select>
+                <a href="imovel-form.html" class="btn-admin btn-primary-sm btn-sm">
+                    <i data-lucide="plus"></i> Novo Imóvel
+                </a>
+            </div>
+        </div>
+
+        <div class="content-area">
+            <div class="card">
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Imóvel</th><th>Tipo</th><th>Preço</th>
+                                <th>Status</th><th>Destaque</th><th>Publicado</th><th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="imoveis-tbody">
+                            <tr><td colspan="7" class="loading">Carregando...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/config.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/dashboard.js"></script>
+<script src="js/imoveis.js"></script>
+<script>
+    lucide.createIcons();
+    checkAuth().then(session => {
+        if (!session) return;
+        document.getElementById('user-email-display').textContent = session.user.email;
+        loadImoveis();
+    });
+    document.getElementById('filter-status').addEventListener('change', loadImoveis);
+</script>
+</body>
+</html>

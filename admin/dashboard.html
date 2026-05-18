@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard — MIB Admin</title>
+    <link rel="stylesheet" href="css/admin.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<div class="admin-layout">
+    <aside class="sidebar">
+        <div class="sidebar-logo">
+            <img src="../img/logo.png" alt="MIB">
+            <div><div class="sidebar-logo-text">MIB Imóveis</div><div class="sidebar-logo-sub">Painel Admin</div></div>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-link active"><i data-lucide="layout-dashboard"></i> Dashboard</a>
+            <a href="imoveis.html"   class="nav-link"><i data-lucide="building-2"></i> Imóveis</a>
+            <a href="leads.html"     class="nav-link"><i data-lucide="users"></i> Leads</a>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <div class="user-email">Conectado como</div>
+                <div class="user-name" id="user-email-display">...</div>
+            </div>
+            <button class="btn-logout" onclick="logout()"><i data-lucide="log-out"></i> Sair</button>
+        </div>
+    </aside>
+
+    <div class="main-content">
+        <div class="topbar">
+            <div class="page-title">
+                <h1>Dashboard</h1>
+                <p>Visão geral da MIB Imóveis</p>
+            </div>
+            <div class="topbar-actions">
+                <a href="imovel-form.html" class="btn-admin btn-primary-sm btn-sm">
+                    <i data-lucide="plus"></i> Novo Imóvel
+                </a>
+            </div>
+        </div>
+
+        <div class="content-area">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-label">Imóveis Ativos <i data-lucide="building-2"></i></div>
+                    <div class="stat-value" id="stat-ativos">—</div>
+                    <div class="stat-sub">no portfólio</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Vendidos <i data-lucide="check-circle"></i></div>
+                    <div class="stat-value" id="stat-vendidos">—</div>
+                    <div class="stat-sub">total histórico</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Leads Totais <i data-lucide="users"></i></div>
+                    <div class="stat-value" id="stat-leads">—</div>
+                    <div class="stat-sub">contatos recebidos</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Aguardando <i data-lucide="bell"></i></div>
+                    <div class="stat-value" id="stat-novos">—</div>
+                    <div class="stat-sub">leads sem contato</div>
+                </div>
+            </div>
+
+            <div class="card mb-6" style="margin-bottom:20px">
+                <div class="card-header">
+                    <span class="card-title">Leads Recentes</span>
+                    <a href="leads.html" class="btn-admin btn-outline-admin btn-sm">Ver todos</a>
+                </div>
+                <div class="table-wrap">
+                    <table>
+                        <thead><tr><th>Nome</th><th>Contato</th><th>Mensagem</th><th>Status</th><th>Data</th></tr></thead>
+                        <tbody id="leads-tbody"><tr><td colspan="5" class="loading">Carregando...</td></tr></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">Imóveis do Portfólio</span>
+                    <a href="imoveis.html" class="btn-admin btn-outline-admin btn-sm">Gerenciar</a>
+                </div>
+                <div class="table-wrap">
+                    <table>
+                        <thead><tr><th>Imóvel</th><th>Status</th><th>Preço</th><th>Destaque</th><th>Ações</th></tr></thead>
+                        <tbody id="imoveis-tbody"><tr><td colspan="5" class="loading">Carregando...</td></tr></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/config.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/dashboard.js"></script>
+<script>
+    lucide.createIcons();
+    checkAuth().then(session => {
+        if (!session) return;
+        document.getElementById('user-email-display').textContent = session.user.email;
+        loadDashboard();
+    });
+</script>
+</body>
+</html>

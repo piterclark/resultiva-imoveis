@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imóvel — MIB Admin</title>
+    <link rel="stylesheet" href="css/admin.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<div class="admin-layout">
+    <aside class="sidebar">
+        <div class="sidebar-logo">
+            <img src="../img/logo.png" alt="MIB">
+            <div><div class="sidebar-logo-text">MIB Imóveis</div><div class="sidebar-logo-sub">Painel Admin</div></div>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-link"><i data-lucide="layout-dashboard"></i> Dashboard</a>
+            <a href="imoveis.html"   class="nav-link active"><i data-lucide="building-2"></i> Imóveis</a>
+            <a href="leads.html"     class="nav-link"><i data-lucide="users"></i> Leads</a>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <div class="user-email">Conectado como</div>
+                <div class="user-name" id="user-email-display">...</div>
+            </div>
+            <button class="btn-logout" onclick="logout()"><i data-lucide="log-out"></i> Sair</button>
+        </div>
+    </aside>
+
+    <div class="main-content">
+        <div class="topbar">
+            <div class="page-title">
+                <h1 id="form-title">Novo Imóvel</h1>
+                <p><a href="imoveis.html" style="color:var(--accent)">← Voltar para imóveis</a></p>
+            </div>
+            <div class="topbar-actions">
+                <button onclick="saveImovel()" class="btn-admin btn-primary-sm">
+                    <i data-lucide="save"></i> Salvar Imóvel
+                </button>
+            </div>
+        </div>
+
+        <div class="content-area">
+            <div id="form-alert" class="alert" style="display:none"></div>
+
+            <div style="display:grid;grid-template-columns:1fr 300px;gap:20px;align-items:start">
+
+                <!-- Coluna principal -->
+                <div>
+                    <div class="card mb-6" style="margin-bottom:16px">
+                        <div class="card-header"><span class="card-title">Informações Gerais</span></div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label>Título do Imóvel *</label>
+                                <input type="text" id="titulo" class="form-control-admin" placeholder="Ex: Torres Cenário — Alto Luxo">
+                            </div>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label>Tipo</label>
+                                    <select id="tipo" class="form-control-admin">
+                                        <option value="apartamento">Apartamento</option>
+                                        <option value="casa">Casa</option>
+                                        <option value="cobertura">Cobertura</option>
+                                        <option value="studio">Studio</option>
+                                        <option value="terreno">Terreno</option>
+                                        <option value="comercial">Comercial</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Finalidade</label>
+                                    <select id="finalidade" class="form-control-admin">
+                                        <option value="venda">Venda</option>
+                                        <option value="aluguel">Aluguel</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Descrição</label>
+                                <textarea id="descricao" class="form-control-admin" rows="4" placeholder="Descreva o imóvel..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card mb-6" style="margin-bottom:16px">
+                        <div class="card-header"><span class="card-title">Localização</span></div>
+                        <div class="card-body">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label>Bairro</label>
+                                    <input type="text" id="bairro" class="form-control-admin" placeholder="Ex: Umarizal">
+                                </div>
+                                <div class="form-group">
+                                    <label>Cidade</label>
+                                    <input type="text" id="cidade" class="form-control-admin" value="Belém">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Endereço completo</label>
+                                <input type="text" id="endereco" class="form-control-admin" placeholder="Rua, número, complemento">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card mb-6" style="margin-bottom:16px">
+                        <div class="card-header"><span class="card-title">Características</span></div>
+                        <div class="card-body">
+                            <div class="form-grid-3">
+                                <div class="form-group"><label>Metragem (m²)</label><input type="number" id="metragem" class="form-control-admin" placeholder="150" min="0"></div>
+                                <div class="form-group"><label>Quartos</label><input type="number" id="quartos" class="form-control-admin" placeholder="0" min="0"></div>
+                                <div class="form-group"><label>Suítes</label><input type="number" id="suites" class="form-control-admin" placeholder="0" min="0"></div>
+                                <div class="form-group"><label>Banheiros</label><input type="number" id="banheiros" class="form-control-admin" placeholder="0" min="0"></div>
+                                <div class="form-group"><label>Vagas</label><input type="number" id="vagas" class="form-control-admin" placeholder="0" min="0"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header"><span class="card-title">Foto de Capa</span></div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label>URL da imagem</label>
+                                <input type="text" id="foto_capa" class="form-control-admin" placeholder="https://...">
+                            </div>
+                            <div id="foto-preview"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div>
+                    <div class="card mb-6" style="margin-bottom:16px">
+                        <div class="card-header"><span class="card-title">Publicação</span></div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label>Preço (R$) *</label>
+                                <input type="number" id="preco" class="form-control-admin" placeholder="1200000" min="0">
+                            </div>
+                            <div class="form-group">
+                                <label>Status</label>
+                                <select id="status" class="form-control-admin">
+                                    <option value="disponivel">Disponível</option>
+                                    <option value="em_negociacao">Em negociação</option>
+                                    <option value="reservado">Reservado</option>
+                                    <option value="vendido">Vendido</option>
+                                </select>
+                            </div>
+                            <div style="display:flex;flex-direction:column;gap:14px;padding-top:4px">
+                                <label style="display:flex;align-items:center;gap:9px;cursor:pointer;font-size:13px;font-weight:500">
+                                    <input type="checkbox" id="publicado" checked style="width:16px;height:16px;accent-color:var(--accent)">
+                                    Publicado no site
+                                </label>
+                                <label style="display:flex;align-items:center;gap:9px;cursor:pointer;font-size:13px;font-weight:500">
+                                    <input type="checkbox" id="destaque" style="width:16px;height:16px;accent-color:var(--accent)">
+                                    ⭐ Destaque da vitrine
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <button onclick="saveImovel()" class="btn-admin btn-primary-sm" style="width:100%;justify-content:center;margin-bottom:8px">
+                                <i data-lucide="save"></i> Salvar
+                            </button>
+                            <a href="imoveis.html" class="btn-admin btn-outline-admin" style="width:100%;justify-content:center">
+                                Cancelar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/config.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/imovel-form.js"></script>
+<script>
+    lucide.createIcons();
+    checkAuth().then(session => {
+        if (!session) return;
+        document.getElementById('user-email-display').textContent = session.user.email;
+        initForm();
+    });
+    document.getElementById('foto_capa').addEventListener('input', function() {
+        document.getElementById('foto-preview').innerHTML = this.value
+            ? `<img src="${this.value}" style="width:100%;height:160px;object-fit:cover;border-radius:8px;margin-top:8px" onerror="this.style.display='none'">`
+            : '';
+    });
+</script>
+</body>
+</html>

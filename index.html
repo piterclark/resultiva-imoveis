@@ -81,7 +81,7 @@
                 <h2 class="section-title">Selecionando o principal destaque.</h2>
             </div>
             
-            <div class="property-card property-card-featured">
+            <div class="property-card property-card-featured" id="featured-card">
                 <div class="property-img" style="height: 100%;">
                     <img src="img/apartment_1.png" alt="Torres Cenário">
                     <div class="badge" style="position: absolute; top: 20px; left: 20px; background: var(--color-primary);">Destaque do Mês</div>
@@ -111,7 +111,7 @@
                 <h2 class="section-title">Imóveis Recentes</h2>
             </div>
             
-            <div class="grid grid-3">
+            <div class="grid grid-3" id="recentes-grid">
                 <!-- Card 1 -->
                 <article class="property-card">
                     <div class="property-img">
@@ -291,7 +291,9 @@
     </footer>
 
     <!-- JS Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="js/main.js"></script>
+    <script src="js/site.js"></script>
     <script>
         lucide.createIcons();
     </script>
